@@ -30,8 +30,9 @@ class Game(db.Model, SerializerMixin):
     reviews = db.relationship("Review", back_populates="game")
 
     users = association_proxy('reviews', 'user',
-                             creator = lambda user_obj: Review(user = user_obj)
-                             )
+                              creator = lambda user_obj : Review(user= user_obj))
+
+    
 
     def __repr__(self):
         return f"<Game {self.title} for {self.platform}>"
